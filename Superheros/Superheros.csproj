@@ -184,6 +184,10 @@
     <Compile Include="Migrations\201811291544031_Heros.Designer.cs">
       <DependentUpon>201811291544031_Heros.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811291944169_InsertSuperhero.cs" />
+    <Compile Include="Migrations\201811291944169_InsertSuperhero.Designer.cs">
+      <DependentUpon>201811291944169_InsertSuperhero.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Hero.cs" />
@@ -277,6 +281,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201811291544031_Heros.resx">
       <DependentUpon>201811291544031_Heros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811291944169_InsertSuperhero.resx">
+      <DependentUpon>201811291944169_InsertSuperhero.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

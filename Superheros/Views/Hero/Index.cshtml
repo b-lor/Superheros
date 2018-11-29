@@ -8,6 +8,7 @@
 
 <p>
     @Html.ActionLink("Create New", "Create")
+
 </p>
 <table class="table">
     <tr>
@@ -29,29 +30,35 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AlterEgo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AbilityOne)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AbilityTwo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Catchphrase)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var hero in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => hero.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => hero.AlterEgo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => hero.AbilityOne)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => hero.AbilityTwo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => hero.Catchphrase)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = hero.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = hero.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = hero.Id })
+            </td>
+        </tr>
+    }
 
 </table>
+
+
+<form action="http://localhost:64425/Hero/Create">
+    <input type="submit" value="Create a new Hero" />
+</form>

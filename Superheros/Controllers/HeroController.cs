@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Superheros.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,11 +9,25 @@ namespace Superheros.Controllers
 {
     public class HeroController : Controller
     {
-        // GET: Hero
-        public ActionResult Index()
+        private ApplicationDbContext applicationDbContext;
+        public HeroController()
         {
-            ViewBag.Message = "Index page.";
-            return View();
+            applicationDbContext = new ApplicationDbContext();
+
+        }
+        protected override void Dispose(bool disposing)
+        {
+            applicationDbContext.Dispose();
+        }
+
+
+
+        // GET: Hero
+        public ViewResult Index()
+        {
+            var myHero = applicationDbContext.Hero.ToList();
+
+            return View(myHero);
         }
 
         public ActionResult Create()
@@ -29,7 +44,6 @@ namespace Superheros.Controllers
 
         public ActionResult Details()
         {
-            ViewBag.Message = "Details page.";
 
             return View();
         }
