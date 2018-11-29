@@ -23,7 +23,7 @@ namespace Superheros
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrap-cyborgv3.css",
                       "~/Content/site.css"));
         }
     }
