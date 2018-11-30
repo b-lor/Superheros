@@ -188,6 +188,14 @@
     <Compile Include="Migrations\201811291944169_InsertSuperhero.Designer.cs">
       <DependentUpon>201811291944169_InsertSuperhero.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811300328185_deletecreated.cs" />
+    <Compile Include="Migrations\201811300328185_deletecreated.Designer.cs">
+      <DependentUpon>201811300328185_deletecreated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811300416014_createadded.cs" />
+    <Compile Include="Migrations\201811300416014_createadded.Designer.cs">
+      <DependentUpon>201811300416014_createadded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Hero.cs" />
@@ -284,6 +292,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811291944169_InsertSuperhero.resx">
       <DependentUpon>201811291944169_InsertSuperhero.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811300328185_deletecreated.resx">
+      <DependentUpon>201811300328185_deletecreated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811300416014_createadded.resx">
+      <DependentUpon>201811300416014_createadded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

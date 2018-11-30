@@ -16,4 +16,5 @@ namespace Superheros.Models
         public string AbilityTwo { get; set; }
         public string Catchphrase { get; set; }
     }
+
 }
