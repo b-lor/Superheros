@@ -9,24 +9,24 @@ namespace Superheros.Controllers
 {
     public class HeroController : Controller
     {
-        private ApplicationDbContext applicationDbContext;
+        private ApplicationDbContext db;
+
         public HeroController()
         {
-            applicationDbContext = new ApplicationDbContext();
+            db = new ApplicationDbContext();
 
         }
-        //protected override void Dispose(bool disposing)
-        //{
-        //    applicationDbContext.Dispose();
-        //}
-
+        protected override void Dispose(bool disposing)
+        {
+            db.Dispose();
+        }
 
 
         // GET: Hero
      
         public ViewResult Index()
         {
-            var myHero = applicationDbContext.Hero.ToList();
+            var myHero = db.Hero.ToList();
 
             return View(myHero);
         }
@@ -40,47 +40,63 @@ namespace Superheros.Controllers
         public ActionResult Create(Hero hero)
         {
             Add(hero);
-            applicationDbContext.SaveChanges();
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 
 
         public void Add(Hero hero)
         {
-            applicationDbContext.Hero.Add(hero);
+            db.Hero.Add(hero);
         }
         
+
         public ActionResult Delete(int id)
         {
-            var hero = applicationDbContext.Hero.SingleOrDefault(i => i.Id == id);
-            //Hero hero = applicationDbContext.Hero(id);
-            if (hero == null)
-            {
-                return View("Superhero not found....");
-            }
-            else
-            {
-                applicationDbContext.Hero.Remove(hero);
-                applicationDbContext.SaveChanges();
-            }
-
+            var hero = db.Hero.Where(d => d.Id == id).First();
             return View(hero);
         }
 
+        //ie-https://stackoverflow.com/questions/11767911/mvc-httppost-httpget-for-action
+
+        [HttpPost, ActionName("Delete")]
+        public ActionResult Delete(Hero hero)
+        {
+            Hero removeHero = db.Hero.Where(h => h.Id == hero.Id).First();
+            db.Hero.Remove(removeHero);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+
+        }
+
+
         public ViewResult Details(int id)
         {
-            var hero = applicationDbContext.Hero.SingleOrDefault(i => i.Id == id);
-            //Hero hero = applicationDbContext.Hero(id);
+            var hero = db.Hero.SingleOrDefault(i => i.Id == id);
             if (hero == null)
-                return View("Superhero not found....");
+                return View("Index");
             else
                 return View(hero);
         }
-        public ActionResult Edit()
+        public ActionResult Edit(int id)
         {
-            ViewBag.Message = "Edit page.";
-
-            return View();
+            var editHero = db.Hero.Where(e => e.Id == id).First();
+            return View(editHero);
         }
+
+        [HttpPost, ActionName("Edit")]
+        public ActionResult Edit(Hero hero)
+        {
+            Hero editHero = db.Hero.Where(e => e.Id == hero.Id).First();
+            editHero.Name = hero.Name;
+            editHero.AlterEgo = hero.AlterEgo;
+            editHero.AbilityOne = hero.AbilityOne;
+            editHero.AbilityTwo = hero.AbilityTwo;
+            editHero.Catchphrase = hero.Catchphrase;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+
+        }
+
     }
 }

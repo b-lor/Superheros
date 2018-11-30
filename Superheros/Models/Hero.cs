@@ -6,8 +6,11 @@ using System.Web;
 
 namespace Superheros.Models
 {
+    
     public class Hero
     {
+
+
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
@@ -15,6 +18,12 @@ namespace Superheros.Models
         public string AbilityOne { get; set; }
         public string AbilityTwo { get; set; }
         public string Catchphrase { get; set; }
+
+
+
+
     }
+
+
 
 }
