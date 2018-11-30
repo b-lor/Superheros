@@ -35,16 +35,25 @@ namespace Superheros.Controllers
             ViewBag.Message = "Create page.";
             return View();
         }
-        public ActionResult Delete()
+        public ActionResult Delete(int id)
         {
-            ViewBag.Message = "Delete page.";
+            var hero = applicationDbContext.Hero.SingleOrDefault(i => i.Id == id);
+            //Hero hero = applicationDbContext.Hero(id);
+            if (hero == null)
+            {
+                return View("Superhero not found....");
+            }
+            else
+            {
+                applicationDbContext.Hero.Remove(hero);
+                applicationDbContext.SaveChanges();
+            }
 
-            return View();
+            return View(hero);
         }
 
-        public ActionResult Details()
+        public ViewResult Details()
         {
-
             return View();
         }
         public ActionResult Edit()
